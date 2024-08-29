@@ -20,6 +20,42 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate=self
         // Do any additional setup after loading the view.
         print("HomeViewController")
+        
+        let parameters = ["acces_key":"72d59945bb65435422e445835130ae35"]
+        var urlComponents = URLComponents(string: "https://data.fixer.io/api/latest")!
+        
+        urlComponents.queryItems = parameters.map {
+            
+            URLQueryItem(name: $0.key, value: $0.value)
+        }
+            
+            guard let url = urlComponents.url else  {
+                print("invalid url")
+                return
+            }
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            
+            let task = URLSession.shared.dataTask(with: request)  {  data,response,error in
+                if let error = error  {
+                    print("Error: \(error)")
+                    return
+                }
+                guard let httpResponse = response as? HTTPURLResponse,
+                        httpResponse.statusCode == 200 else  {
+                        print ("Invalid response status code not 200")
+                    return
+                }
+                if let data = data  {
+                    if let dataString = String(data: data, encoding: .utf8)  {
+                        print ("Data is in string:  \(dataString)")
+                    }
+                }
+                
+                //print("data : \(data)")
+            }
+        task.resume()
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyTableViewCell", for: indexPath) as! MyTableViewCell
@@ -45,5 +81,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 66
     }
+    
 }
 
