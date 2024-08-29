@@ -21,7 +21,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
         print("HomeViewController")
         
-        let parameters = ["acces_key":"72d59945bb65435422e445835130ae35"]
+        let parameters = ["access_key":"72d59945bb65435422e445835130ae35"]
         var urlComponents = URLComponents(string: "https://data.fixer.io/api/latest")!
         
         urlComponents.queryItems = parameters.map {
