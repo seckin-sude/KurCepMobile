@@ -17,4 +17,11 @@ class MyTableViewCell:UITableViewCell  {
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let margins = UIEdgeInsets(top: 0, left: 5, bottom: 10, right: 5)
+        contentView.frame = contentView.frame.inset(by: margins)
+        
+    }
 }

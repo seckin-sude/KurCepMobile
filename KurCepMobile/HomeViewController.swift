@@ -28,7 +28,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.fromLabel.text = currencyList[indexPath.row].currencyName
         cell.toLabel.text = "TRY"
         cell.chageRateLabel.text = String(currencyList[indexPath.row].changeRate) + "%"
-        cell.priceLabel.text = String(currencyList[indexPath.row].price)
+        cell.priceLabel.text = "₺" + String(currencyList[indexPath.row].price)
         
         // ContentView'ün köşe özelliklerini ve border'ı ayarla
         cell.contentView.layer.cornerRadius = 10
@@ -42,6 +42,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currencyList.count
     }
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 66
+    }
 }
 
