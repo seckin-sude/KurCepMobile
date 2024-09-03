@@ -11,7 +11,7 @@ import UIKit
 class MyTableViewCell:UITableViewCell  {
     
     
-    @IBOutlet weak var currencyIcon: UIImageView!
+    @IBOutlet weak var currencyImage: UIImageView!
     
     @IBOutlet weak var chageRateLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
@@ -20,8 +20,7 @@ class MyTableViewCell:UITableViewCell  {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let margins = UIEdgeInsets(top: 0, left: 5, bottom: 10, right: 5)
-        contentView.frame = contentView.frame.inset(by: margins)
         
+        currencyImage?.image = UIImage(named: "shiba-inu")
     }
 }
