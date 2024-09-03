@@ -16,6 +16,7 @@
 		F31EA1CF2C7F1DEA00C0FBFC /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31EA1CE2C7F1DEA00C0FBFC /* ConverterViewController.swift */; };
 		F31EA1D12C7F218700C0FBFC /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31EA1D02C7F218700C0FBFC /* MyTableViewCell.swift */; };
 		F3F44F272C7F3FB300CDA6A8 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F44F262C7F3FB300CDA6A8 /* CurrencyModel.swift */; };
+		F3FE30542C86F14F00E81344 /* CurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FE30532C86F14F00E81344 /* CurrencyResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F31EA1CE2C7F1DEA00C0FBFC /* ConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
 		F31EA1D02C7F218700C0FBFC /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		F3F44F262C7F3FB300CDA6A8 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
+		F3FE30532C86F14F00E81344 /* CurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				F31EA1BA2C7F156700C0FBFC /* AppDelegate.swift */,
 				F31EA1BC2C7F156700C0FBFC /* SceneDelegate.swift */,
 				F31EA1BE2C7F156700C0FBFC /* HomeViewController.swift */,
+				F3FE30532C86F14F00E81344 /* CurrencyResponse.swift */,
 				F31EA1CE2C7F1DEA00C0FBFC /* ConverterViewController.swift */,
 				F31EA1D02C7F218700C0FBFC /* MyTableViewCell.swift */,
 				F3F44F262C7F3FB300CDA6A8 /* CurrencyModel.swift */,
@@ -153,6 +156,7 @@
 				F31EA1BD2C7F156700C0FBFC /* SceneDelegate.swift in Sources */,
 				F31EA1D12C7F218700C0FBFC /* MyTableViewCell.swift in Sources */,
 				F31EA1CF2C7F1DEA00C0FBFC /* ConverterViewController.swift in Sources */,
+				F3FE30542C86F14F00E81344 /* CurrencyResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
