@@ -19,5 +19,5 @@ struct CurrencyResponse {
     var value:Double
 }
 
-var currencyResponseDict =  [CurrencyResponse(currencyName: "Test", value: 2.0)]
+var currencyResponseList =  [CurrencyResponse(currencyName: "Test", value: 2.0)]
 

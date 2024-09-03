@@ -13,6 +13,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     
+    let CORE_URL:String = "https://data.fixer.io/api/"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +24,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("HomeViewController")
         
         let parameters = ["access_key":"72d59945bb65435422e445835130ae35"]
-        var urlComponents = URLComponents(string: "https://data.fixer.io/api/latest")!
+        var urlComponents = URLComponents(string: CORE_URL + "/latest")!
         
         urlComponents.queryItems = parameters.map {
             
@@ -54,6 +56,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         let jsonDecoder = JSONDecoder()
                         let response: Response = try jsonDecoder.decode(Response.self, from: data)
                         print("IS RESPONSE SUCCESS?" + String(response.success))
+                        currencyResponseList.removeAll()
+                        for currencyTemp in response.rates  {
+                            print("response:" + currencyTemp.key)
+                            var element: CurrencyResponse =
+                            CurrencyResponse(currencyName: currencyTemp.key, value: currencyTemp.value)
+                            currencyResponseList.append(element)
+                        }
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                        
                     } catch let errorInparsing {
                         print("Error IN parsing." + errorInparsing.localizedDescription)
                         
@@ -68,11 +81,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyTableViewCell", for: indexPath) as! MyTableViewCell
     
-        cell.imageView?.image = currencyList[indexPath.row].currencyIcon
-        cell.fromLabel.text = currencyList[indexPath.row].currencyName
-        cell.toLabel.text = "TRY"
-        cell.chageRateLabel.text = String(currencyList[indexPath.row].changeRate) + "%"
-        cell.priceLabel.text = "₺" + String(currencyList[indexPath.row].price)
+        
+        cell.fromLabel.text = currencyResponseList[indexPath.row].currencyName
+        cell.toLabel.text = "EUR"
+        
+        let formattedDouble = String(format: "%.2f", currencyResponseList[indexPath.row].value)
+
+        
+        cell.priceLabel.text = "€" + String(formattedDouble)
         
         // ContentView'ün köşe özelliklerini ve border'ı ayarla
         cell.contentView.layer.cornerRadius = 10
@@ -84,7 +100,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currencyList.count
+        return currencyResponseList.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 66
